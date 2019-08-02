@@ -1,10 +1,9 @@
-# 課題
+# suburi-linebot
 
-[TOC]
+LineBot の素振りプロジェクト。
 
-実用的なシステムの例として、時間と用件を送信すると、その時間に用件をリマインダーとしてLineにpushしてくれるlinebotを作成する。
+時間と用件を送信すると、その時間に用件をリマインダーとしてLineにpushしてくれるLineBotを作成する。
 
-わからない語句があった場合は、Web検索などで確認しておくとよい。
 
 ## 前準備
 
@@ -12,9 +11,10 @@
 
 IntelliJ を起動し、展開された `simple-assistant` の pom.xml を選ぶ。
 
-このプロジェクトには、前回利用した line-bot-sdk と、5月頃の授業で学んだデータベース（H2Database）が利用できるように事前セッティングしている。
+このプロジェクトには、line-bot-sdk とデータベース（H2Database）が利用できるように事前セッティングしている。
 
 <div style="page-break-after: always"></div>
+
 ## インテント（要求意図）を定義する
 
 ### Intent enumを作成
@@ -57,7 +57,7 @@ public enum Intent {
 
 ### UserIntent クラスを作成
 
-chatbotは複数人で平行・同時に利用されることがあり得るが、chatbot側のプログラムはひとつだけである。そのため、chatbot側はユーザーごとに「どんな意図の会話をしているか（つまり、インテント）」を分けて管理する必要がある。
+LineBotは複数人で平行・同時に利用されることがあり得るが、LineBot側のプログラムはひとつだけである。そのため、LineBot側はユーザーごとに「どんな意図の会話をしているか（つまり、インテント）」を分けて管理する必要がある。
 
 ユーザーごとのインテントの状態を管理するためのクラスとして、  `com.example.simple_assistant.m` パッケージに、UserIntent クラスを作成する。
 
@@ -106,11 +106,12 @@ public class UserIntent {
 ```
 
 <div style="page-break-after: always"></div>
-## インテントにあわせて返答する
 
-準備してきたクラスを組みあせる処理を作れば、LineBotがユーザーに投げかけられたメッセージから、 インテント が `UNKNOWN`, `REMINDER` のどちらかを判断し、返答を変えるChatbotが作れる。
+### CallBackクラスを作成
 
- `com.example.simple_assistant.c` パッケージに、このchatbotの主たる中身になる CallBack クラスを作成する（クラスのコードが長いので間違えないように）。
+準備してきたクラスを組みあせる処理を作れば、LineBotがユーザーに投げかけられたメッセージから、 インテント が `UNKNOWN`, `REMINDER` のどちらかを判断し、返答を変えるLineBotが作れる。
+
+`com.example.simple_assistant.c` パッケージに、このLineBotの主たる中身になる CallBack クラスを作成する（クラスのコードが長いので間違えないように）。
 
 import は先に作るのではなく、コード入力時にIntelliJに補完してもらうように進めた方が早く完成する。
 
@@ -232,19 +233,18 @@ public class CallBack {
 }
 ```
 
-クラスが完成したら、一度ソースコードを読み、処理の流れを確認しなさい。
+### 動作確認1
 
-また、LINE Developer のサイトから、先週までに作成したchatbotの `Channel Secret`, `アクセストークン（ロングターム）` の値をもらい、 `application.properties` ファイルの対応項目を修正しなさい。
+クラスが完成したら、LINE Developers のサイトから、 `Channel Secret`, `アクセストークン（ロングターム）` の値を発行し、 `application.properties` ファイルの対応項目を修正する。
 
-さらに ngrok で取得したURLを LINE Developer のサイトに登録し、アプリケーションを動作させ、自らのLINEから動作確認を行いなさい。
+さらに ngrok で取得したURLを LINE Developers のサイトに登録し、アプリケーションを動作させ、自らのLINEから動作確認を行う。
 
-（このあたりの準備や動作を忘れた学生は、前回の課題ファイルを参照）
-
-下の画像のように会話を行い、動作を確認しなさい。<br>特に、handleIntent メソッドのswitch文では再帰処理を使い、リマインダーの確認状態の時に他の話題が投稿されても、確認を続けるように工夫している。
+下の画像のように会話を行い、動作を確認する。<br>特に、handleIntent メソッドのswitch文では再帰処理を使い、リマインダーの確認状態の時に他の話題が投稿されても、確認を続けるように工夫している。
 
 ![fig01](https://raw.githubusercontent.com/gishi-yama/suburi-linebot/master/simple-assistant/doc/fig01.png)
 
 <div style="page-break-after: always"></div>
+
 ## リマインダーをデータベースに保存する
 
 確認メッセージで〈はい〉が押された場合、時間と用件をデータベースに記録する。
@@ -269,7 +269,7 @@ public class CallBack {
 
 このテーブルに、`xx時xx分にxx` という文章から得られる変数データ（xxの部分）を記録し、後から使えるようにする。
 
-この変数データの部分を、対話システムでは **エンティティ** と呼ぶ。ただし、システム開発ではエンティティという言葉が違う意味でよく使われる（タプルのマッピングデータ、概念データモデルでのデータの枠組み、etc...）ので、ここではあえて〈**変数データ**〉と呼ぶ。
+この変数データの部分を、対話システムでは **スロット** と呼ぶ。ここではあえて〈**変数データ**〉と呼ぶ。
 
 
 ### Intent enumを修正
@@ -453,7 +453,7 @@ public class CallBack {
   // データベースにアクセスするためのクラス　←追加
   private ReminderRepository repos;
 
-　// ↓コンストラクタにも引数を追加
+  // ↓コンストラクタにも引数を追加
   @Autowired
   public CallBack(Set<UserIntent> userIntents, ReminderRepository repos) {
     this.userIntents = userIntents;
@@ -495,6 +495,8 @@ public class CallBack {
 
 ```
 
+### 動作確認2
+
 LineBotを起動し、動作確認を行う。
 
 実際にデータが追加されているか確認したい場合は、IntelliJのデータベースウィンドウに `jdbc:h2:~/h2db/SimpleAssistant;MODE=PostgreSQL;AUTO_SERVER=TRUE;` (ユーザー名・パスワードは両方とも `sa` ）でh2データベースを登録して，テーブルの中身を実際に確認しても良い。
@@ -508,7 +510,6 @@ LineBotを起動し、動作確認を行う。
 そのためにはまず、データベースに記録されたリマインダの情報を検索できる必要がある。また、リマインダが不要となったものはゴミデータとして削除する必要がある。
 
 このため、 ReminderRepository クラスに、select, delete メソッドを追加する。
-
 
 ```java
 package com.example.simple_assistant.m;
@@ -601,11 +602,10 @@ public class Push {
 }
 ```
 
-## 動作確認
+### 動作確認3
 
 LINE Botを動作させ、任意の時間にリマインダするようメッセージを送る。
 
 LINE Botは時間になると、ユーザーにリマインダメッセージを返す。
 
 ![fig02](https://raw.githubusercontent.com/gishi-yama/suburi-linebot/master/simple-assistant/doc/fig02.png)
-
