@@ -351,6 +351,10 @@ public class ReminderItem {
   private String userId;
   private LocalTime pushAt;
   private String pushText;
+  
+  public ReminderItem() {
+    this("", LocalTime.MIN, "");
+  }
 
   public ReminderItem(UserIntent userIntent) {
     try {
