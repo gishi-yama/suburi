@@ -1,4 +1,4 @@
-# suburi-linebot
+# simple-assistant
 
 LineBot の素振りプロジェクト。
 
