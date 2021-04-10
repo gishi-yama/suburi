@@ -6,3 +6,7 @@
 
 - [linbot-simple-assistant](./linbot-simple-assistant)
     - linebotでモード分けとかどう教えようかな？と思って作ってみたサンプル
+- [tdd20210410](./tdd20210410)
+    - [テストコードのリファクタリングが目指すもの](https://dxd2021.cto-a.org/program/time-table/a-1) を聞いてたらうずうずしてきたので途中から追いかけたコード
+    - 後でもしアーカイブが公開されたら清書する
+
