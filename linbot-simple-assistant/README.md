@@ -241,7 +241,7 @@ public class CallBack {
 
 下の画像のように会話を行い、動作を確認する。<br>特に、handleIntent メソッドのswitch文では再帰処理を使い、リマインダーの確認状態の時に他の話題が投稿されても、確認を続けるように工夫している。
 
-![fig01](https://raw.githubusercontent.com/gishi-yama/suburi-linebot/master/simple-assistant/doc/fig01.png)
+![fig01](./doc/fig01.png?raw=true)
 
 <div style="page-break-after: always"></div>
 
