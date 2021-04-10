@@ -608,4 +608,4 @@ LINE Botを動作させ、任意の時間にリマインダするようメッセ
 
 LINE Botは時間になると、ユーザーにリマインダメッセージを返す。
 
-![fig02](https://raw.githubusercontent.com/gishi-yama/suburi-linebot/master/simple-assistant/doc/fig02.png)
+![fig02](./doc/fig02.png?raw=true)
