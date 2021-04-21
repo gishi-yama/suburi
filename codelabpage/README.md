@@ -1,5 +1,11 @@
 # Google Codelabs Page を作ってみる
 
+
+```sh
+cd src
+claat export -o "../../docs/codelabpage" suburi.md
+```
+
 ## 参考文献
 
 - https://github.com/googlecodelabs/tools/tree/master/claat
