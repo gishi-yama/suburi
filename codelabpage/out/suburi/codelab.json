@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-04-21T13:57:36+09:00",
+  "id": "suburi",
+  "duration": 0,
+  "title": "Google Codelabs ドキュメント作成の素振り",
+  "summary": "Google Codelabs ドキュメント作成の素振り",
+  "source": "suburi.md",
+  "theme": "",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://github.com/gishi-yama/suburi",
+  "url": "suburi"
+}
