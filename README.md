@@ -9,4 +9,5 @@
 - [tdd20210410](./tdd20210410)
     - [テストコードのリファクタリングが目指すもの](https://dxd2021.cto-a.org/program/time-table/a-1) を聞いてたらうずうずしてきたので途中から追いかけたコード
     - 後でもしアーカイブが公開されたら清書する
-
+- [codelabpage](./codelabpage)
+    - md/adoc だとハンズオンや課題資料が見づらいな...と思ったので Google Codelabs のドキュメントを試してみたサンプル
