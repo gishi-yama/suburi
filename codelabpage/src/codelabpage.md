@@ -1,6 +1,6 @@
 author: @gishi_yama
 summary: Google Codelabs ドキュメント作成の素振り
-id: odelabpage
+id: codelabpage
 categories: codelab,markdown
 environments: Web
 status: Draft
