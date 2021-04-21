@@ -3,7 +3,7 @@
 
 ```sh
 cd src
-claat export -o "../../docs/codelabpage" suburi.md
+claat export -o "../../docs/" codelabpage.md
 ```
 
 ## 参考文献
