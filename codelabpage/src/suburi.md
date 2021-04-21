@@ -8,16 +8,22 @@ feedback link: https://github.com/gishi-yama/suburi
 
 # Google Codelabs ドキュメント作成の素振り
 
-## 1. はじめに
+## はじめに
 
 Positive
 : 敵の潜水艦を発見!
 
-## 2. 次に
+## 次に
 
 Negative
 : 駄目だ!
 
-## 3. おわりに
+## おわりに
 
-![https://www.youtube.com/watch?v=hNf_qrEjTnU](https://www.youtube.com/watch?v=hNf_qrEjTnU)
+### image
+
+![img](./img/hqdefault.jpg)
+
+### video
+
+ <video id="hNf_qrEjTnU"></video> 
