@@ -32,7 +32,7 @@ public class Controller {
 
   @PostMapping("/postJson")
   public String postWithForm(@RequestBody ReqJson reqJson) {
-    String formatted = String.format("%s: post ReqJSon(%d) with application/json", LocalTime.now().toString(), reqJson.id);
+    String formatted = String.format("%s: post ReqJSon(id=%d) with application/json", LocalTime.now().toString(), reqJson.id);
     return formatted;
   }
 
